@@ -1,0 +1,9 @@
+<% @articles.each do |article| %>
+ <ul>
+   <li><%= article.title %></li>
+   <li><%= article.content %></li>
+   <% user = User.find(article.user_id)%>
+   <li>Written by: <%= user.first + user.last %></li>
+   <li><%= article.created_at %></li>
+ </ul>
+<% end %>

@@ -1,0 +1,9 @@
+<% user = User.find(session[:user_id]) %>
+<h1>Your Account</h1>
+<h3><%= user.first %>  <%= user.last %></h3>
+<h4><%= user.email %></h4>
+<h4><%= user.birthday %></h4>
+
+<form action="/users/<%= user.id %>" method="post">
+  <input type="submit" name="" value="Delete User">
+</form>

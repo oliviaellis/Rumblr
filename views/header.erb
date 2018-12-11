@@ -1,0 +1,14 @@
+<nav>
+<ul>
+  <li><a href="/">Home</a></li>
+  <% if session['user_id'] == nil %>
+  <li><a href="/users/new">Sign Up</a></li>
+  <li><a href="/login">Log In</a></li>
+  <% end %>
+    <% if session['user_id'] %>
+    <form action="/logout" method="post">
+      <input type="submit" name="" value="logout">
+    </form>
+    <% end %>
+</ul>
+</nav>

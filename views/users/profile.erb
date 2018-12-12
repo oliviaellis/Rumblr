@@ -1,10 +1,13 @@
-<h2><%= @user.first%></h2>
-<p><%= @user.email%></p>
-
-<% articles = Article.where(user_id: params[:id]) %>
-<% articles.each do |article|%>
-<div class="article">
-  <h3><%= article.title %></h3>
-  <p><%= article.content %></p>
+<div id="switch_bg">
+  <div id="left_con"><div id="left_button"></div></div>
+  <div id="right_con"></div>
+  <div class="user_articles">
+    <% articles = Article.where(user_id: params[:id]) %>
+    <% articles.each do |article|%>
+    <div class="article">
+      <h3><%= article.title %></h3>
+      <p><%= article.content %></p>
+    </div>
+    <% end %>
+  </div>
 </div>
-<% end %>

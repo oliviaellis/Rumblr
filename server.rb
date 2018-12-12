@@ -6,10 +6,6 @@ enable :sessions
 set :database, {adapter: "sqlite3", database: "database.sqlite3"}
 
 class User < ActiveRecord::Base
-  validates :first, presence: true
-  validates :last, presence: true
-  validates :email, uniqueness: true
-  validates :password, length: { in: 6..20 }
   has_many :articles
 end
 
@@ -27,16 +23,15 @@ end
 
 post '/login' do
   user = User.find_by(email: params['email'])
-  p user.password
   if user != nil
     if user.password == params['password']
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
-      p 'Incorrect password.'
+      redirect '/login'
     end
   else
-    p 'Email not found.'
+    redirect '/login'
   end
 end
 
@@ -62,10 +57,14 @@ get '/articles/new' do # READ
 end
 
 post '/users/new' do # CREATE
-  # There's a reason we use User.new and user.save that Michael will get into later
-  # It has to do with validating the input before we save it to the database.
-  @user = User.new(first: params['first'], last: params['last'], email: params['email'], password: params['password'], birthday: params['birthday'])
-  @user.save
+  user = User.new(first: params['first'], last: params['last'], email: params['email'], password: params['password'], birthday: params['birthday'])
+  find_user = User.find_by(email: params['email'])
+  if find_user == nil
+    user.save
+  else
+    p "User already exists."
+    redirect '/'
+  end
   session[:user_id] = @user.id
   redirect "users/#{@user.id}"
 end

@@ -1,12 +1,45 @@
 <!-- <a href="/articles/new">Create Article</a> -->
-<div id="signup-form">
-  <form class="" action="index.html" method="post">
-    <input type="text" name="first" placeholder="First Name"></input><br>
-    <input type="text" name="last" placeholder="Last Name"></input><br>
-    <input type="password" name="password" placeholder="Password"></input><br>
-    <input type="text" name="email" placeholder="Email"></input><br>
-    <input type="date" name="birthday"></input>
-  </form>
+<div id="landing">
+  <div id="logo"><img src="rumblr.png" /></div>
+  <div id="d_pad">
+    <a href="#all_articles"><div id="d_down"></div></a>
+  </div>
+  <div id="start_button" onclick="signup()"></div>
+  <div class="form" id="signup-form">
+    <form class="" action="/users/new" method="post">
+      <input type="text" name="first" placeholder="First Name"></input><br>
+      <input type="text" name="last" placeholder="Last Name"></input><br>
+      <input type="password" name="password" placeholder="Password"></input><br>
+      <input type="text" name="email" placeholder="Email"></input><br>
+      <input type="date" name="birthday"></input><br>
+      <input type="submit" name="" value="Sign Up"></input>
+    </form>
+  </div>
+  <div id="a_button" onclick="login()"></div>
+  <div class="form" id="login-form">
+    <form class="" action="/login" method="post">
+      <input type="text" name="email" placeholder="Email"></input><br>
+      <input type="password" name="password" placeholder="Password"></input><br>
+      <input type="submit" name="" value="Log In"></input>
+    </form>
+  </div>
+  <a href="#all_articles"><div id="b_button"></div></a>
 </div>
-<button id="signup" onclick="signup()">Sign Up</button><br>
-<button id="login" onclick="login()">Log In</button>
+<div id="all_articles">
+  <div id="left_square"><button onclick="plusDivs(-1)"></button></div>
+  <div id="right_square"><button onclick="plusDivs(1)"></button></div>
+  <div id="frame">
+    <% articles = Article.all %>
+    <% articles.each do |article| %>
+    <% owner = User.find(article.user_id) %>
+    <div class="article">
+      <h3><%= article.title %></h3>
+      <h4>By <%= owner.first%> <%= owner.last%></h4>
+      <p><%= article.content %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+<footer>
+  <h2>Like what you see? <a href="#landing" onclick="signup()">Sign up</a></h2>
+</footer>

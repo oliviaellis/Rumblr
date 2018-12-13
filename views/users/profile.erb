@@ -1,6 +1,17 @@
 <div id="switch_bg">
-  <div id="left_con"><div id="left_button"></div></div>
-  <div id="right_con"></div>
+  <div id="left_con">
+    <div id="left_button"></div>
+    <h3 id="left">ARTICLES</h3>
+  </div>
+  <div id="right_con">
+    <div id="right_con_buttons" onclick="edit_user()">
+      <div class="switch_button" id="right_con_up_button"></div>
+      <div class="switch_button" id="right_con_left_button"></div>
+      <div class="switch_button" id="right_con_down_button"></div>
+      <div class="switch_button" id="right_con_right_button"></div>
+      <h3 id="right">SETTINGS</h3>
+    </div>
+  </div>
   <div class="user_articles">
     <% articles = Article.where(user_id: params[:id]) %>
     <% articles.each do |article|%>

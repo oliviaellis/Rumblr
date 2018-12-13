@@ -4,11 +4,26 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/main.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <title></title>
   </head>
   <body>
-    <%# <%= erb :header %>
-    <%= yield %>
+    <div id="switch_bg">
+      <div id="left_con">
+        <div id="left_button"></div>
+      </div>
+      <div id="screen_content">
+        <%= yield %>
+      </div>
+      <div id="right_con">
+        <div id="right_con_buttons" onclick="edit_user()">
+          <div class="switch_button" id="right_con_up_button"></div>
+          <div class="switch_button" id="right_con_left_button"></div>
+          <div class="switch_button" id="right_con_down_button"></div>
+          <div class="switch_button" id="right_con_right_button"></div>
+        </div>
+      </div>
+    </div>
     <script src="/main.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 @import 'main.css';
 
 div#switch_bg {
-  position: absolute;
+  position: fixed;
   background-color: black;
   width: 100%;
   height: 100%;
@@ -9,32 +9,97 @@ div#switch_bg {
   text-align: center;
 }
 
-div.user_articles{
+div.user_articles {
   width: 60%;
   height: 100%;
   margin: 25px 20% 0 20%;
   background-color: white;
 }
 
+div.user_profile {
+  width: 60%;
+  height: 100%;
+  margin: 25px 20% 0 20%;
+  background-color: white;
+}
+
+
 div#left_con {
-  position: absolute;
+  position: fixed;
+  top: 0;
   left: 0;
   height: 100%;
   width: 18%;
   background-color: rgb(255, 69, 84);
 }
 
-div#right_con {
+div#left_button {
+  position: relative;
+  top: 200px;
+  left: 75px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  background-color: #333;
+}
+
+div#left_con h3#left {
+  font-size: 2.5em;
   position: absolute;
+  top: 350px;
+  left: 30px;
+  color: rgb(203, 52, 64);
+}
+
+div#right_con {
+  position: fixed;
+  top: 0;
   right: 0;
   height: 100%;
   width: 18%;
   background-color: rgb(0, 195, 227);
 }
 
-div#left_button {
+div#right_con_buttons {
+  position: relative;
+  top: 150px;
+  left: 30px;
+  height: 190px;
+  width: 75%;
+}
+
+div#right_con_buttons h3#right {
+  font-size: 2.5em;
+  position: absolute;
+  bottom: -120px;
+  color: rgb(7, 141, 163);
+}
+
+div.switch_button {
+  position: absolute;
+  background-color: #333;
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  background-color: #333;
+}
+
+div#right_con_up_button {
+  top: 0;
+  left: 38%;
+}
+
+div#right_con_right_button {
+  top: 40%;
+  right: 0;
+
+}
+
+div#right_con_down_button {
+  bottom: 0;
+  left: 38%;
+}
+
+div#right_con_left_button {
+  top: 40%;
+  left: 0;
 }

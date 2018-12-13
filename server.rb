@@ -79,7 +79,9 @@ end
 
 post '/users/:id' do # DELETE
   @user = User.find(params[:id])
+  @user_articles = Article.where(owner_id: params[:id])
   @user.destroy
+  @user_articles.destroy
   redirect '/users/?'
 end
 

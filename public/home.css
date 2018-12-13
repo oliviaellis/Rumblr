@@ -190,3 +190,10 @@ footer h2 {
 footer a {
   color: white;
 }
+
+div#screen_content {
+  width: 60%;
+  height: 92%;
+  margin: 25px 20%;
+  background-color: white;
+}

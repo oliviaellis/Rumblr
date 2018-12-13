@@ -1,9 +1,24 @@
-<% user = User.find(session[:user_id]) %>
-<h1>Your Account</h1>
-<h3><%= user.first %>  <%= user.last %></h3>
-<h4><%= user.email %></h4>
-<h4><%= user.birthday %></h4>
-
-<form action="/users/<%= user.id %>" method="post">
-  <input type="submit" name="" value="Delete User">
-</form>
+<div id="switch_bg">
+  <div id="left_con">
+    <div id="left_button"></div>
+    <h3 id="left">BACK</h3>
+  </div>
+  <div id="right_con">
+    <div id="right_con_buttons">
+      <div class="switch_button" id="right_con_up_button"></div>
+      <div class="switch_button" id="right_con_left_button"></div>
+      <div class="switch_button" id="right_con_down_button"></div>
+      <div class="switch_button" id="right_con_right_button"></div>
+    </div>
+  </div>
+  <div class="user_profile">
+    <% user = User.find(session[:user_id]) %>
+    <h1>Your Account</h1>
+    <h3><%= user.first %>  <%= user.last %></h3>
+    <h4><%= user.email %></h4>
+    <h4><%= user.birthday %></h4>
+    <form action="/users/<%= user.id %>" method="post">
+      <input type="submit" name="" value="Delete User">
+    </form>
+  </div>
+</div>

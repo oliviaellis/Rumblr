@@ -37,3 +37,7 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";
 }
+
+function edit_user() {
+  window.location.href = '/users/:id/edit';
+}

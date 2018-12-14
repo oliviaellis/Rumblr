@@ -100,7 +100,7 @@ post '/articles/:id' do # DELETE
 end
 
 get '/articles/?' do
-  @articles = Article.last(20).reverse
+  @articles = Article.last(20)
   erb :'articles/index'
 end
 

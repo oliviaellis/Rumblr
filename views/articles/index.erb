@@ -5,7 +5,7 @@
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <% article = Article.find('1') %>
+        <% article = Article.last %>
         <div class="article">
           <h3><%= article.title %></h3>
           <% user = User.find(article.user_id)%>
@@ -18,8 +18,8 @@
           <p><%= article.content %></p>
         </div>
       </div>
-      <% @articles.each do |article| %>
-      <% position = @articles.index(article) %>
+      <% @articles.reverse.each do |article| %>
+      <% position = @articles.reverse.index(article) %>
       <% next if position == 0 %>
        <div class="carousel-item">
          <h3><%= article.title %></h3>

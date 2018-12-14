@@ -5,7 +5,7 @@
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <% article = Article.order("created_at").last %>
+        <% article = Article.where(user_id: params[:id]).last %>
         <% if article != nil %>
         <div class="article" onclick="delete_article">
           <h3><%= article.title %></h3>
@@ -20,8 +20,8 @@
       </div>
       <% articles = Article.where(user_id: params[:id]) %>
       <% if articles != nil %>
-        <% articles.each do |article|%>
-        <% position = articles.index(article) %>
+        <% articles.reverse.each do |article|%>
+        <% position = articles.reverse.index(article) %>
         <% next if position == 0 %>
         <div class="carousel-item">
           <div class="article">

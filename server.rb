@@ -100,7 +100,7 @@ post '/articles/:id' do # DELETE
 end
 
 get '/articles/?' do
-  @articles = Article.last(20)
+  @articles = Article.all.order('created_at DESC').take(20)
   erb :'articles/index'
 end
 

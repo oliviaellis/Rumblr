@@ -84,6 +84,10 @@ end
 post '/users/:id' do # DELETE
   user = User.find(session[:user_id])
   if params['password'] == user.password
+    user_articles = Article.where(user_id: user.id)
+    user_articles.each do |article|
+      article.update(user_id: nil)
+    end
     user.destroy
     session[:user_id] = nil
   else
@@ -100,7 +104,7 @@ post '/articles/:id' do # DELETE
 end
 
 get '/articles/?' do
-  @articles = Article.all.order('created_at DESC').take(20)
+  @articles = Article.last(20)
   erb :'articles/index'
 end
 

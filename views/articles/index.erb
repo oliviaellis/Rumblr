@@ -8,12 +8,12 @@
         <% article = Article.last %>
         <div class="article">
           <h3><%= article.title %></h3>
-          <% user = User.find(article.user_id)%>
-          <% if user != nil %>
-          <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
+          <% if article.user_id != nil %>
+            <% user = User.find(article.user_id)%>
+            <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
           <% else %>
-          <h4>Written by:[deleted]</h4>
-          <h4><%= article.created_at %></h4>
+            <h4>Written by:[deleted]</h4>
+            <h4><%= article.created_at %></h4>
           <% end %>
           <p><%= article.content %></p>
         </div>
@@ -23,12 +23,12 @@
       <% next if position == 0 %>
        <div class="carousel-item">
          <h3><%= article.title %></h3>
-         <% user = User.find(article.user_id)%>
-         <% if user != nil %>
-         <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
+         <% if article.user_id != nil %>
+          <% user = User.find(article.user_id)%>
+          <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
          <% else %>
-         <h4>Written by:[deleted]</h4>
-         <h4><%= article.created_at %></h4>
+          <h4>Written by:[deleted]</h4>
+          <h4><%= article.created_at %></h4>
          <% end %>
          <p><%= article.content %></p>
        </div>

@@ -1,24 +1,25 @@
-<div id="switch_bg">
-  <div id="left_con">
-    <div id="left_button"></div>
-    <h3 id="left">BACK</h3>
-  </div>
-  <div id="right_con">
-    <div id="right_con_buttons">
-      <div class="switch_button" id="right_con_up_button"></div>
-      <div class="switch_button" id="right_con_left_button"></div>
-      <div class="switch_button" id="right_con_down_button"></div>
-      <div class="switch_button" id="right_con_right_button"></div>
-    </div>
-  </div>
-  <div class="user_profile">
-    <% user = User.find(session[:user_id]) %>
-    <h1>Your Account</h1>
-    <h3><%= user.first %>  <%= user.last %></h3>
-    <h4><%= user.email %></h4>
-    <h4><%= user.birthday %></h4>
-    <form action="/users/<%= user.id %>" method="post">
-      <input type="submit" name="" value="Delete User">
-    </form>
-  </div>
+<div id="user_settings">
+  <h2>Your Account</h2>
 </div>
+<div id="edit_user_settings">
+  <% user = User.find(session[:user_id]) %>
+  <form id="edit_user" method="post" action= <%= "/users/#{user.id}/edit" %> >
+    <input type="text" name="first" value=<%= "#{user.first}" %>></input><br>
+    <input type="text" name="last" value=<%= "#{user.last}" %>></input><br>
+    <input type="text" name="email" value=<%= "#{user.email}" %>></input><br>
+    <input type="date" name="birthday" value=<%= "#{user.birthday}" %>></input><br>
+    <input type="password" name="password" placeholder="Password"></input><br>
+    <input id="save_changes" type="submit" value="Save Changes"></input>
+  </form>
+  <div id="delete_user" class="delete">Delete User</div>
+</div>
+
+<div id="confirm_delete">
+  <form action=<%= "/users/#{user.id}" %> method="post">
+    <h3>Enter your password to confirm. This action is permanent.</h3>
+    <input type="password" name="password" placeholder="password"><br>
+    <input type="submit" value="Delete User">
+  </form>
+</div>
+
+<script src="/edit.js"></script>

@@ -1,14 +1,18 @@
 <nav>
-<ul>
-  <li><a href="/">Home</a></li>
-  <% if session['user_id'] == nil %>
-  <li><a href="/users/new">Sign Up</a></li>
-  <li><a href="/login">Log In</a></li>
-  <% end %>
-    <% if session['user_id'] %>
-    <form action="/logout" method="post">
-      <input type="submit" name="" value="logout">
-    </form>
+  <ul>
+    <% if session[:user_id] != nil %>
+    <li><a href=<%= "/users/#{session[:user_id]}" %>><img src="/home_icon.png"></a></li>
+    <li><a href=<%= "/users/#{session[:user_id]}/edit" %>><span style="color: Black;"><i class="fas fa-cog fa-lg"></i></span></a></li>
+    <li>
+      <form action="/logout" method="post">
+        <input type="image" name="submit" alt="Submit" src="/power_icon.png"></input>
+      </form>
+    </li>
     <% end %>
-</ul>
+    <li><div id="time"></div></li>
+    <li><i class="fas fa-wifi fa-lg"></i></li>
+    <li><i class="fas fa-battery-full fa-lg"></i></li>
+  </ul>
 </nav>
+
+<script src="/header.js"></script>

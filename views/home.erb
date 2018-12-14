@@ -1,0 +1,40 @@
+<h1>Switchboard</h1>
+<div class="grid">
+  <div class="card" id="login_button">
+    <div id="mushroom">
+      <img src="mushroom.png">
+    </div>
+    <div class="container">
+      <h4>Log In</h4>
+    </div>
+  </div>
+
+  <div class="card" id="signup_button">
+    <div id="egg">
+      <img src="egg.png">
+    </div>
+    <div class="container">
+      <h4>Sign Up</h4>
+    </div>
+  </div>
+
+  <a class="home" href="/articles"><div class="card">
+    <div id="star">
+      <img src="star.png">
+    </div>
+    <div class="container">
+      <h4>Browse Articles</h4>
+    </div>
+  </div></a>
+</div>
+
+<div id="login_modal" class="modal">
+  <div id="modal_content">
+    <form id="modal_form" action="/login" method="post">
+      <input type="text" name="email" placeholder="Email"></input><br>
+      <input type="password" name="password" placeholder="Password"></input><br>
+      <input type="submit" name="" value="Log In"></input>
+    </form>
+  </div>
+</div>
+<script src="home.js"></script>

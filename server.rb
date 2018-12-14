@@ -3,10 +3,10 @@ require 'sinatra/activerecord'
 
 enable :sessions
 
-if ENV['RACK_ENV'] == 'development'
-  set :database, {adapter: "sqlite3", database: "database.sqlite3"}
-else
+if ENV['RACK_ENV']
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
+else
+  set :database, {adapter: "sqlite3", database: "database.sqlite3"}
 end
 
 class User < ActiveRecord::Base
@@ -22,7 +22,7 @@ get '/' do
 end
 
 get '/login' do
-  erb :'/users/login'
+  erb :home
 end
 
 post '/login' do
@@ -61,10 +61,10 @@ get '/articles/new' do # READ
 end
 
 post '/users/new' do # CREATE
-  user = User.new(first: params['first'], last: params['last'], email: params['email'], password: params['password'], birthday: params['birthday'])
+  @user = User.new(first: params['first'], last: params['last'], email: params['email'], password: params['password'], birthday: params['birthday'])
   find_user = User.find_by(email: params['email'])
   if find_user == nil
-    user.save
+    @user.save
   else
     p "User already exists."
     redirect '/'
@@ -76,32 +76,31 @@ end
 post '/articles/new' do # CREATE
   @article = Article.new(title: params['title'], content: params['content'], user_id: session['user_id'])
   @article.save
-  redirect "articles/#{@article.id}"
+  redirect "users/#{@article.user_id}"
 end
 
 # Below should be a delete request, but Sinatra doesn't support them.
 
 post '/users/:id' do # DELETE
-  @user = User.find(params[:id])
-  @user_articles = Article.where(owner_id: params[:id])
-  @user.destroy
-  @user_articles.destroy
-  redirect '/users/?'
+  user = User.find(session[:user_id])
+  if params['password'] == user.password
+    user.destroy
+    session[:user_id] = nil
+  else
+    puts "Incorrect password"
+    redirect "users/#{user.id}"
+  end
+  redirect '/'
 end
 
 post '/articles/:id' do # DELETE
   @article = Article.find(params[:id])
   @article.destroy
-  redirect '/articles/?'
-end
-
-get '/users/?' do
-  @users = User.all
-  erb :'users/index'
+  redirect "/users/#{session[:user_id]}"
 end
 
 get '/articles/?' do
-  @articles = Article.all
+  @articles = Article.last(20).reverse
   erb :'articles/index'
 end
 
@@ -114,7 +113,13 @@ get '/users/:id/edit' do
   erb :'users/edit'
 end
 
-get '/articles/:id' do
-  @article = Article.find(params[:id])
-  erb :'articles/article'
+post '/users/:id/edit' do
+  user = User.find(params[:id])
+  if params['password'] == user.password
+    user.update(first: params['first'], last: params['last'], email: params['email'], password: user.password, birthday: params['birthday'])
+    redirect "/users/#{user.id}"
+  else
+    puts "Incorrect password"
+    redirect "/users/#{user.id}/edit"
+  end
 end

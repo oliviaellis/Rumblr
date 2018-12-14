@@ -1,24 +1,41 @@
-<div id="switch_bg">
-  <div id="left_con">
-    <div id="left_button"></div>
-    <h3 id="left">ARTICLES</h3>
-  </div>
-  <div id="right_con">
-    <div id="right_con_buttons" onclick="edit_user()">
-      <div class="switch_button" id="right_con_up_button"></div>
-      <div class="switch_button" id="right_con_left_button"></div>
-      <div class="switch_button" id="right_con_down_button"></div>
-      <div class="switch_button" id="right_con_right_button"></div>
-      <h3 id="right">SETTINGS</h3>
+<div id="user_header">
+  <h2><%= @user.first %>'s Page</h2>
+</div>
+<div id="user_articles">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <% article = Article.order("created_at").last %>
+        <% if article != nil %>
+        <div class="article" onclick="delete_article">
+          <h3><%= article.title %></h3>
+          <p><%= article.content %></p>
+        </div>
+        <% if article.user_id == session[:user_id] %>
+        <form id="delete_article" method="post" action=<%="/articles/#{article.id}" %> >
+          <input type="submit" name="" value="Delete Post">
+        </form>
+        <% end %>
+        <% end %>
+      </div>
+      <% articles = Article.where(user_id: params[:id]) %>
+      <% if articles != nil %>
+        <% articles.each do |article|%>
+        <% position = articles.index(article) %>
+        <% next if position == 0 %>
+        <div class="carousel-item">
+          <div class="article">
+            <h3><%= article.title %></h3>
+            <p><%= article.content %></p>
+          </div>
+          <% if article.user_id == session[:user_id] %>
+          <form id="delete_article" method="post" action=<%="/articles/#{article.id}" %> >
+            <input type="submit" name="" value="Delete Post">
+          </form>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
     </div>
-  </div>
-  <div class="user_articles">
-    <% articles = Article.where(user_id: params[:id]) %>
-    <% articles.each do |article|%>
-    <div class="article">
-      <h3><%= article.title %></h3>
-      <p><%= article.content %></p>
-    </div>
-    <% end %>
   </div>
 </div>

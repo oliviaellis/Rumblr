@@ -1,9 +1,38 @@
-<% @articles.each do |article| %>
- <ul>
-   <li><%= article.title %></li>
-   <li><%= article.content %></li>
-   <% user = User.find(article.user_id)%>
-   <li>Written by: <%= user.first + user.last %></li>
-   <li><%= article.created_at %></li>
- </ul>
-<% end %>
+<div id="user_header">
+  <h2>Top Articles</h2>
+</div>
+<div id="user_articles">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <% article = Article.find('1') %>
+        <div class="article">
+          <h3><%= article.title %></h3>
+          <% user = User.find(article.user_id)%>
+          <% if user != nil %>
+          <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
+          <% else %>
+          <h4>Written by:[deleted]</h4>
+          <h4><%= article.created_at %></h4>
+          <% end %>
+          <p><%= article.content %></p>
+        </div>
+      </div>
+      <% @articles.each do |article| %>
+      <% position = @articles.index(article) %>
+      <% next if position == 0 %>
+       <div class="carousel-item">
+         <h3><%= article.title %></h3>
+         <% user = User.find(article.user_id)%>
+         <% if user != nil %>
+         <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
+         <% else %>
+         <h4>Written by:[deleted]</h4>
+         <h4><%= article.created_at %></h4>
+         <% end %>
+         <p><%= article.content %></p>
+       </div>
+      <% end %>
+    </div>
+  </div>
+</div>

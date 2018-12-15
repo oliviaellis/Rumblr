@@ -1,0 +1,223 @@
+$switch-red: rgb(255, 69, 84);
+$switch-blue: rgb(0, 195, 227);
+$switch-background: rgb(239, 239, 239);
+$switch-buttons: #333;
+$transparent: rgba(0,0,0,0);
+
+@import 'home';
+@import 'newuser';
+@import 'newarticle';
+@import 'edituser';
+@import 'profile';
+
+body {
+  color: white;
+  margin: 0;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+nav {
+  position: fixed;
+  top: 3%;
+  right: 22%;
+  height: 100px;
+  color: black;
+  ul {
+    height: 50px;
+    li {
+      display: inline-block;
+      padding: 5px;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+  img {
+    position: relative;
+    bottom: 1px;
+    height: 30px;
+  }
+  #time {
+    font-size: 1.5vw;
+  }
+}
+
+input[type=image] {
+  position: relative;
+  bottom: -10px;
+  height: 30px;
+  width: 30px;
+  border: none;
+}
+
+#user_header,
+#new_user_header,
+#new_article_header,
+#user_settings {
+  text-align: left;
+  padding: 75px 50px 20px 50px;
+}
+
+div#switch_bg {
+  position: fixed;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  color: black;
+  text-align: center;
+}
+
+div.user_articles {
+  position: absolute;
+  left: 10%;
+  height: 75%;
+  width: 80%;
+  color: black;
+  background-color: white;
+  overflow: scroll;
+  padding: 25px;
+}
+
+div.article {
+  h3 {
+    font-size: 2vw;
+  }
+}
+
+div#left_con {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 18%;
+  background-color: $switch-red;
+}
+
+div#minus_sign {
+  position: relative;
+  top: 50px;
+  left: 50%;
+  height: 20px;
+  width: 75px;
+  background-color: $switch-buttons;
+}
+
+div#left_stick {
+  position: relative;
+  top: 30%;
+  left: 30%;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  background-color: $switch-buttons;
+}
+
+div#right_con {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 18%;
+  background-color: $switch-blue;
+}
+
+div#plus_sign {
+  position: relative;
+  top: 50px;
+  left: 20%;
+  height: 75px;
+  width: 75px;
+  background-color: $switch-buttons;
+  clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 66% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%);
+}
+
+div#right_con_buttons {
+  position: relative;
+  top: 150px;
+  left: 30px;
+  height: 190px;
+  width: 75%;
+}
+
+div.switch_button {
+  position: absolute;
+  background-color: $switch-buttons;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+}
+
+div#right_con_up_button {
+  top: 0;
+  left: 38%;
+}
+
+div#right_con_right_button {
+  top: 40%;
+  right: 0;
+
+}
+
+div#right_con_down_button {
+  bottom: 0;
+  left: 38%;
+}
+
+div#right_con_left_button {
+  top: 40%;
+  left: 0;
+}
+
+div#screen_content {
+  position: fixed;
+  width: 60%;
+  height: 92%;
+  margin: 25px 20%;
+  background-color: $switch-background;
+}
+
+h2 {
+  font-size: 3vw;
+  border-bottom: 5px solid black;
+}
+
+a.carousel-control-next {
+  z-index: 3;
+  font-size: 2em;
+  height: 50px;
+  right: 15%;
+  top: 37%;
+  color: black;
+  opacity: 1;
+  &:hover {
+    z-index: 3;
+    position: absolute;
+    right: 15%;
+    top: 37%;
+    font-size: 2em;
+    color: black;
+  }
+}
+
+a.carousel-control-prev {
+  z-index: 3;
+  position: absolute;
+  height: 50px;
+  left: 15%;
+  top: 37%;
+  font-size: 2em;
+  color: black;
+  opacity: 1;
+  &:hover {
+    z-index: 3;
+    position: absolute;
+    height: 50px;
+    left: 15%;
+    top: 37%;
+    font-size: 2em;
+    color: black;
+  }
+}

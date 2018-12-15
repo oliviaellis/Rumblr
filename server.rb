@@ -39,7 +39,7 @@ post '/login' do
   end
 end
 
-post '/logout' do # DELETE
+post '/logout' do
   session['user_id'] = nil
   redirect '/'
 end
@@ -50,14 +50,6 @@ get '/users/new' do # READ
     redirect '/'
   end
   erb :'/users/new'
-end
-
-get '/articles/new' do # READ
-  if session['user_id'] == nil
-    p 'Log in or create an account.'
-    redirect '/'
-  end
-  erb :'/articles/new'
 end
 
 post '/users/new' do # CREATE
@@ -73,13 +65,10 @@ post '/users/new' do # CREATE
   redirect "users/#{@user.id}"
 end
 
-post '/articles/new' do # CREATE
-  @article = Article.new(title: params['title'], content: params['content'], user_id: session['user_id'])
-  @article.save
-  redirect "users/#{@article.user_id}"
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb :'users/profile'
 end
-
-# Below should be a delete request, but Sinatra doesn't support them.
 
 post '/users/:id' do # DELETE
   user = User.find(session[:user_id])
@@ -97,22 +86,6 @@ post '/users/:id' do # DELETE
   redirect '/'
 end
 
-post '/articles/:id' do # DELETE
-  @article = Article.find(params[:id])
-  @article.destroy
-  redirect "/users/#{session[:user_id]}"
-end
-
-get '/articles/?' do
-  @articles = Article.last(20)
-  erb :'articles/index'
-end
-
-get '/users/:id' do
-  @user = User.find(params[:id])
-  erb :'users/profile'
-end
-
 get '/users/:id/edit' do
   erb :'users/edit'
 end
@@ -126,4 +99,29 @@ post '/users/:id/edit' do
     puts "Incorrect password"
     redirect "/users/#{user.id}/edit"
   end
+end
+
+get '/articles/new' do # READ
+  if session['user_id'] == nil
+    p 'Log in or create an account.'
+    redirect '/'
+  end
+  erb :'/articles/new'
+end
+
+post '/articles/new' do # CREATE
+  @article = Article.new(title: params['title'], content: params['content'], user_id: session['user_id'])
+  @article.save
+  redirect "users/#{@article.user_id}"
+end
+
+post '/articles/:id' do # DELETE
+  @article = Article.find(params[:id])
+  @article.destroy
+  redirect "/users/#{session[:user_id]}"
+end
+
+get '/articles/?' do
+  @articles = Article.last(20)
+  erb :'articles/index'
 end

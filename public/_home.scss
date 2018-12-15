@@ -1,0 +1,92 @@
+h1 {
+  font-size: 6vw;
+  margin: 0;
+  padding-top: 20%;
+  border-bottom: solid 10px black;
+}
+
+.grid {
+  padding-top: 10%;
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  grid-template-rows: 100%;
+  grid-column-gap: 5px;
+  margin-left: 150px;
+  .card {
+    background-color: white;
+    width: 100%;
+    height: 225px;
+    &:hover {
+      border: 3px solid $switch-blue;
+    }
+    img {
+      height: 80%;
+      margin-top: 10%;
+    }
+    #mushroom {
+      height: 75%;
+      background-color: blue;
+    }
+
+    #egg {
+      height: 75%;
+      background-color: red;
+    }
+
+    #star {
+      height: 75%;
+      background-color: green;
+    }
+    .container {
+      margin-top: 8%;
+    }
+  }
+  .home {
+    color: black;
+    text-decoration: none;
+    &:hover {
+      color: black;
+      text-decoration: none;
+    }
+    h4 {
+      font-size: 1.2em;
+    }
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 38%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: $switch-background;
+  #modal_content {
+    color: white;
+    margin: 15% auto;
+    width: 50%;
+  }
+  #modal_form {
+    input {
+      height: 50px;
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: white;
+      border: 3px solid $switch-blue;
+    }
+    input[type=submit] {
+      background-color: $transparent;
+      border: 2px solid black;
+      color: black;
+      margin-top: 50px;
+      width: 50%;
+      border-radius: 5px;
+      &:hover {
+        background-color: white;
+        border: 2px solid $switch-blue;
+      }
+    }
+  }
+}

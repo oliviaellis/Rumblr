@@ -1,11 +1,11 @@
 <nav>
   <ul>
     <% if session[:user_id] != nil %>
-    <li><a href=<%= "/users/#{session[:user_id]}" %>><img src="/home_icon.png"></a></li>
+    <li><a href=<%= "/users/#{session[:user_id]}" %>><img src="/images/home_icon.png"></a></li>
     <li><a href=<%= "/users/#{session[:user_id]}/edit" %>><span style="color: Black;"><i class="fas fa-cog fa-lg"></i></span></a></li>
     <li>
       <form action="/logout" method="post">
-        <input type="image" name="submit" alt="Submit" src="/power_icon.png"></input>
+        <input type="image" name="submit" alt="Submit" src="/images/power_icon.png"></input>
       </form>
     </li>
     <% end %>

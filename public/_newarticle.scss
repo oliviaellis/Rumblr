@@ -1,0 +1,28 @@
+#new_article {
+  padding-top: 5%;
+  input {
+    width: 60%;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    background-color: $transparent;
+    border: 2px solid black;
+    margin-bottom: 50px;
+    &:focus {
+      background-color: white;
+      border: 5px solid $switch-blue;
+      outline: none;
+    }
+  }
+  textarea {
+    background-color: $transparent;
+    border: 2px solid black;
+    width: 60%;
+    height: 300px;
+    &:focus {
+      background-color: white;
+      border: 5px solid $switch-blue;
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+div#edit_user_settings {
+  position: absolute;
+  left: 10%;
+  height: 75%;
+  width: 80%;
+  color: black;
+  padding: 25px;
+  text-align: left;
+}
+
+#edit_user {
+  input {
+    background-color: $transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 1.75em;
+    width: 100%;
+    &:focus {
+      background-color: white;
+      outline: none;
+      border: none;
+      border: 2px solid $switch-blue;
+      font-size: 1.75em;
+      width: 100%;
+    }
+  }
+  input[type=submit] {
+    background-color: $switch-blue;
+    font-size: 20px;
+    border: none;
+    color: white;
+    height: 50px;
+    width: 150px;
+    border-radius: 0px;
+    position: absolute;
+    left: 5%;
+  }
+}
+
+#delete_user {
+  padding: 10px 20px;
+  position: relative;
+  top: 25%;
+  left: 1.5%;
+  font-size: 1.25em;
+  background-color: red;
+  color: white;
+  height: 50px;
+  width: 150px;
+}
+
+#confirm_delete {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0,0,0, 0.8);
+  height: 100%;
+  width: 100%;
+  color: black;
+  form {
+    position: fixed;
+    top: 35%;
+    left: 37%;
+    background-color: white;
+    height: 400px;
+    width: 400px;
+  }
+  h3 {
+    color: black;
+  }
+  input[type=submit] {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 0px;
+  }
+}

@@ -1,0 +1,11 @@
+<footer>
+  <ul id="button_controls">
+    <li>Minus - Recent Articles</li>
+    <% if session[:user_id] == nil %>
+      <li>Plus - Home</li>
+    <% else %>
+      <li>Plus - New Article</li>
+    <% end %>
+  </ul>
+</footer>
+<script src="/footer.js"></script>

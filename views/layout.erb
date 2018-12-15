@@ -9,33 +9,38 @@
     <title></title>
   </head>
   <body onload="get_time()">
-    <div id="switch_bg">
-      <div id="left_con">
-        <a href="/articles"><div id="minus_sign"></div></a>
-        <div id="left_stick"></div>
-      </div>
-      <div id="screen_content">
-        <%= erb :header %>
-        <%= yield %>
-      </div>
-      <div id="right_con">
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-        <a href="/articles/new"><div id="plus_sign"></div></a>
-        <div id="right_con_buttons">
-          <div class="switch_button" id="right_con_up_button"></div>
-          <div class="switch_button" id="right_con_left_button"></div>
-          <div class="switch_button" id="right_con_down_button"></div>
-          <div class="switch_button" id="right_con_right_button"></div>
+    <div id="screen_content">
+      <%= erb :header %>
+      <%= yield %>
+      <%= erb :footer %>
+    </div>
+    <div class="switch_frame" id="switch_frame_top"></div>
+    <div id="left_con">
+      <a href="/articles"><div id="minus_sign"></div></a>
+      <div id="left_stick"></div>
+    </div>
+    <div class="switch_frame" id="switch_frame_left"></div>
+    <div class="switch_frame" id="switch_frame_right"></div>
+    <div id="right_con">
+      <a href="/articles/new"><div id="plus_sign"></div></a>
+      <div id="right_con_buttons">
+        <div class="switch_button" id="right_con_up_button"></div>
+        <div class="switch_button" id="right_con_left_button">
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </div>
+        <div class="switch_button" id="right_con_down_button"></div>
+        <div class="switch_button" id="right_con_right_button">
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
       </div>
     </div>
+    <div class="switch_frame" id="switch_frame_bottom"></div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

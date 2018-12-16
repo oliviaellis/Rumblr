@@ -184,30 +184,44 @@ h1 {
   color: #c3c3c3;
 }
 
-#new_article {
-  padding-top: 5%;
+#new_article_page {
+  height: 100%;
+  width: 100%;
 }
-#new_article input {
-  width: 60%;
+#new_article_page #new_article {
+  padding-top: 5%;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+#new_article_page #new_article input {
   height: 50px;
+  width: 100%;
   font-size: 20px;
   border: none;
   background-color: rgba(0, 0, 0, 0);
   border: 2px solid black;
-  margin-bottom: 50px;
+  margin-bottom: 5%;
 }
-#new_article input:focus {
+#new_article_page #new_article input:focus {
   background-color: white;
   border: 5px solid #00c3e3;
   outline: none;
 }
-#new_article textarea {
+#new_article_page #new_article input[type=submit] {
+  color: white;
+  background-color: blue;
+  width: 30%;
+  margin: 3% 35%;
+  border: none;
+}
+#new_article_page #new_article textarea {
   background-color: rgba(0, 0, 0, 0);
   border: 2px solid black;
-  width: 60%;
   height: 300px;
+  width: 100%;
 }
-#new_article textarea:focus {
+#new_article_page #new_article textarea:focus {
   background-color: white;
   border: 5px solid #00c3e3;
   outline: none;

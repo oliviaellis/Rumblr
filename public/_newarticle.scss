@@ -1,28 +1,42 @@
-#new_article {
-  padding-top: 5%;
-  input {
-    width: 60%;
-    height: 50px;
-    font-size: 20px;
-    border: none;
-    background-color: $transparent;
-    border: 2px solid black;
-    margin-bottom: 50px;
-    &:focus {
-      background-color: white;
-      border: 5px solid $switch-blue;
-      outline: none;
+#new_article_page {
+  height: 100%;
+  width: 100%;
+  #new_article {
+    padding-top: 5%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    input {
+      height: 50px;
+      width: 100%;
+      font-size: 20px;
+      border: none;
+      background-color: $transparent;
+      border: 2px solid black;
+      margin-bottom: 5%;
+      &:focus {
+        background-color: white;
+        border: 5px solid $switch-blue;
+        outline: none;
+      }
     }
-  }
-  textarea {
-    background-color: $transparent;
-    border: 2px solid black;
-    width: 60%;
-    height: 300px;
-    &:focus {
-      background-color: white;
-      border: 5px solid $switch-blue;
-      outline: none;
+    input[type=submit] {
+      color: white;
+      background-color: blue;
+      width: 30%;
+      margin: 3% 35%;
+      border: none;
+    }
+    textarea {
+      background-color: $transparent;
+      border: 2px solid black;
+      height: 300px;
+      width: 100%;
+      &:focus {
+        background-color: white;
+        border: 5px solid $switch-blue;
+        outline: none;
+      }
     }
   }
 }

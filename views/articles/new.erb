@@ -1,9 +1,11 @@
-<div id="new_article_header">
-  <h2>New Article</h2>
+<div id="new_article_page">
+  <div id="new_article_header">
+    <h2>New Article</h2>
+  </div>
+  <form id="new_article" action="/articles/new" method="post">
+    <input type="text" name="title" placeholder="Title" /><br>
+    <input type="text" name="image" placeholder="Link to image" />
+    <textarea name="content" placeholder="Content"></textarea><br>
+    <input type="submit" name="submit" />
+  </form>
 </div>
-<form id="new_article" action="/articles/new" method="post">
-  <input type="text" name="title" /><br>
-  <input type="text" name="image" placeholder="link to image" />
-  <textarea name="content"></textarea><br>
-  <input type="submit" name="submit" />
-</form>

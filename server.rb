@@ -70,7 +70,7 @@ get '/users/:id' do
   erb :'users/profile'
 end
 
-post '/users/:id' do # DELETE
+post '/users/:id' do # DELETE USER
   user = User.find(session[:user_id])
   if params['password'] == user.password
     user_articles = Article.where(user_id: user.id)
@@ -126,7 +126,7 @@ get '/articles/:id' do
   erb :'articles/article'
 end
 
-post '/articles/:id' do # DELETE
+post '/articles/:id' do # DELETE ARTICLE
   @article = Article.find(params[:id])
   @article.destroy
   redirect "/users/#{session[:user_id]}"

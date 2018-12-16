@@ -1,41 +1,19 @@
 <div id="user_header">
-  <h2><%= @user.first %>'s Page</h2>
+  <h2><img src=<%="/images/profile_icons/#{@user.icon}.png"%> style="background-color:<%=@user.color%>"></img><%="#{@user.first}'s Page"%></h2>
 </div>
 <div id="user_articles">
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <% article = Article.where(user_id: params[:id]).last %>
-        <% if article != nil %>
-        <div class="article" onclick="delete_article">
-          <h3><%= article.title %></h3>
-          <p><%= article.content %></p>
-        </div>
+  <% articles = Article.where(user_id: params[:id]) %>
+  <% if articles != nil %>
+    <% articles.reverse.each do |article|%>
+      <div class="grid_item">
+        <img src=<%="#{article.image}"%>></img>
+        <h3><%= article.title %></h3>
         <% if article.user_id == session[:user_id] %>
         <form id="delete_article" method="post" action=<%="/articles/#{article.id}" %> >
           <input type="submit" name="" value="Delete Post">
         </form>
         <% end %>
-        <% end %>
       </div>
-      <% articles = Article.where(user_id: params[:id]) %>
-      <% if articles != nil %>
-        <% articles.reverse.each do |article|%>
-        <% position = articles.reverse.index(article) %>
-        <% next if position == 0 %>
-        <div class="carousel-item">
-          <div class="article">
-            <h3><%= article.title %></h3>
-            <p><%= article.content %></p>
-          </div>
-          <% if article.user_id == session[:user_id] %>
-          <form id="delete_article" method="post" action=<%="/articles/#{article.id}" %> >
-            <input type="submit" name="" value="Delete Post">
-          </form>
-          <% end %>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>

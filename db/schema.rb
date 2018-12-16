@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_204137) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.string "image"
     t.text "content"
     t.integer "user_id"
     t.datetime "created_at"
@@ -25,6 +26,8 @@ ActiveRecord::Schema.define(version: 2018_12_11_204137) do
     t.string "email"
     t.string "password"
     t.date "birthday"
+    t.string "icon"
+    t.string "color"
   end
 
 end

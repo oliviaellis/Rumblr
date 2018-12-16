@@ -53,7 +53,7 @@ get '/users/new' do # READ
 end
 
 post '/users/new' do # CREATE
-  @user = User.new(first: params['first'], last: params['last'], email: params['email'], password: params['password'], birthday: params['birthday'])
+  @user = User.new(first: params['first'], last: params['last'], email: params['email'], password: params['password'], birthday: params['birthday'], icon: params['icon'], color: params['color'])
   find_user = User.find_by(email: params['email'])
   if find_user == nil
     @user.save
@@ -110,9 +110,20 @@ get '/articles/new' do # READ
 end
 
 post '/articles/new' do # CREATE
-  @article = Article.new(title: params['title'], content: params['content'], user_id: session['user_id'])
+  user_image = params['image']
+  if user_image == ""
+    image = 'https://vignette.wikia.nocookie.net/crypt-of-the-necrodancer/images/f/fc/Nintendo_Switch_icon.png/revision/latest?cb=20180517200137'
+  else
+    image = params['image']
+  end
+  @article = Article.new(title: params['title'], image: image, content: params['content'], user_id: session['user_id'])
   @article.save
   redirect "users/#{@article.user_id}"
+end
+
+get '/articles/:id' do
+  @article = Article.find(params[:id])
+  erb :'articles/article'
 end
 
 post '/articles/:id' do # DELETE

@@ -1,38 +1,13 @@
 <div id="user_header">
-  <h2>Top Articles</h2>
+  <h2>Recent Articles</h2>
 </div>
 <div id="user_articles">
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <% article = Article.last %>
-        <div class="article">
-          <h3><%= article.title %></h3>
-          <% if article.user_id != nil %>
-            <% user = User.find(article.user_id)%>
-            <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
-          <% else %>
-            <h4>Written by:[deleted]</h4>
-            <h4><%= article.created_at %></h4>
-          <% end %>
-          <p><%= article.content %></p>
-        </div>
-      </div>
-      <% @articles.reverse.each do |article| %>
-      <% position = @articles.reverse.index(article) %>
-      <% next if position == 0 %>
-       <div class="carousel-item">
-         <h3><%= article.title %></h3>
-         <% if article.user_id != nil %>
-          <% user = User.find(article.user_id)%>
-          <h4>Written by: <a href= <%="/users/#{user.id}"%> ><%= user.first %></a></h4>
-         <% else %>
-          <h4>Written by:[deleted]</h4>
-          <h4><%= article.created_at %></h4>
-         <% end %>
-         <p><%= article.content %></p>
-       </div>
-      <% end %>
-    </div>
-  </div>
+  <% @articles.reverse.each do |article| %>
+   <a href=<%="/articles/#{article.id}"%>>
+     <div class="grid_item">
+       <img src=<%="#{article.image}"%>></img>
+       <h3><%= article.title %></h3>
+     </div>
+   </a>
+  <% end %>
 </div>

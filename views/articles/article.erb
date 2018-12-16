@@ -1,0 +1,11 @@
+<div id="single_article">
+  <% user = User.find(@article.user_id) %>
+  <% if user != nil %>
+    <h4>By <a href=<%="/users/#{user.id}"%>><%= user.first %></a></h4>
+  <% end %>
+  <h2><%= @article.title %></h2>
+  <% if @article.image != 'https://vignette.wikia.nocookie.net/crypt-of-the-necrodancer/images/f/fc/Nintendo_Switch_icon.png/revision/latest?cb=20180517200137' %>
+    <img src=<%="#{@article.image}"%>></img>
+  <% end %>
+  <p><%= @article.content %></p>
+</div>

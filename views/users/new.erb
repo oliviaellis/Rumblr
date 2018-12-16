@@ -1,8 +1,45 @@
 <div id="new_user_header">
   <h2>New Profile</h2>
 </div>
+<div id="select_icon">
+  <img src="/images/profile_icons/mario.png" onclick="select_image('mario')"></img>
+  <img src="/images/profile_icons/luigi.png" onclick="select_image('luigi')"></img>
+  <img src="/images/profile_icons/peach.png" onclick="select_image('peach')"></img>
+  <img src="/images/profile_icons/yoshi.png" onclick="select_image('yoshi')"></img>
+  <img src="/images/profile_icons/bowser.png" onclick="select_image('bowser')"></img>
+  <img src="/images/profile_icons/donkeykong.png" onclick="select_image('donkeykong')"></img>
+  <img src="/images/profile_icons/botw_link.png" onclick="select_image('botw_link')"></img>
+  <img src="/images/profile_icons/botw_zelda.png" onclick="select_image('botw_zelda')"></img>
+  <img src="/images/profile_icons/guardian.png" onclick="select_image('guardian')"></img>
+  <img src="/images/profile_icons/isabelle.png" onclick="select_image('isabelle')"></img>
+  <img src="/images/profile_icons/tomnook.png" onclick="select_image('tomnook')"></img>
+  <img src="/images/profile_icons/kkslider.png" onclick="select_image('kkslider')"></img>
+  <img src="/images/profile_icons/blathers.png" onclick="select_image('blathers')"></img>
+  <img src="/images/profile_icons/splatoon_girl.png" onclick="select_image('splatoon_girl')"></img>
+  <img src="/images/profile_icons/splatoon_boy.png" onclick="select_image('splatoon_boy')"></img>
+  <img src="/images/profile_icons/redpikmin.png" onclick="select_image('redpikmin')"></img>
+  <img src="/images/profile_icons/bluepikmin.png" onclick="select_image('bluepikmin')"></img>
+  <img src="/images/profile_icons/yellowpikmin.png" onclick="select_image('yellowpikmin')"></img>
+  <img src="/images/profile_icons/samus.png" onclick="select_image('samus')"></img>
+  <img src="/images/profile_icons/zerosuitsamus.png" onclick="select_image('zerosuitsamus')"></img>
+  <img src="/images/profile_icons/kirby.png" onclick="select_image('kirby')"></img>
+  <img src="/images/profile_icons/metaknight.png" onclick="select_image('metaknight')"></img>
+  <img src="/images/profile_icons/captaintoad.png" onclick="select_image('captaintoad')"></img>
+  <img src="/images/profile_icons/captaintoadette.png" onclick="select_image('captaintoadette')"></img>
+</div>
+<div id="color_picker" style="visibility:hidden;">
+  <input class="jscolor" id="color" onchange="update(this.jscolor)" value="">
+  <button onclick="create_user()">OK</button>
+  <script>
+    function update(jscolor) {
+      document.getElementById('icon').style.backgroundColor = '#' + jscolor
+    }
+  </script>
+</div>
 <div id="signup_form">
   <form class="" action="/users/new" method="post">
+    <input type="text" id="profile_icon" name="icon" style="display:none;">
+    <input type="text" id="profile_color" name="color" style="display:none;">
     <input type="text" name="first"></input><br>
     <label>First Name</label><br>
     <input type="text" name="last"></input><br>
@@ -16,3 +53,5 @@
     <input type="submit" name="" value="Sign Up"></input>
   </form>
 </div>
+<script src="/newuser.js"></script>
+<script src="/jscolor.js"></script>

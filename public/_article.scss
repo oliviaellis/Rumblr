@@ -1,8 +1,12 @@
 #single_article {
+  height: 95%;
   padding: 5% 10%;
   overflow: scroll;
   img {
-    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
   }
   p {
     padding-top: 20px;

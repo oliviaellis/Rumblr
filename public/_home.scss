@@ -8,7 +8,7 @@ h1 {
   text-align: center;
 }
 
-.grid {
+#grid {
   display: grid;
   width: 60%;
   margin: 0 20%;
@@ -71,13 +71,11 @@ h1 {
   position: fixed;
   z-index: 1;
   top: 38%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
-  background-color: $switch-background;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
   #modal_content {
-    color: white;
-    margin: 15% auto;
+    margin: 5% auto;
     width: 50%;
   }
   #modal_form {
@@ -85,20 +83,24 @@ h1 {
       height: 50px;
       width: 100%;
       margin-bottom: 10px;
-      background-color: white;
-      border: 3px solid $switch-blue;
+      background-color: $transparent;
+      color: white;
+      border: none;
+      border-bottom: 2px solid white;
+      font-size: 20px;
+      &:focus {
+        outline: none;
+      }
     }
     input[type=submit] {
-      background-color: $transparent;
-      border: 2px solid black;
-      color: black;
-      margin-top: 50px;
-      width: 50%;
-      border-radius: 5px;
-      &:hover {
-        background-color: white;
-        border: 2px solid $switch-blue;
-      }
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: blue;
+      border: none;
+      color: white;
+      margin-top: 30px;
+      width: 30%;
     }
   }
 }

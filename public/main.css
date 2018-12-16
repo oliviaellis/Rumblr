@@ -8,7 +8,7 @@ h1 {
   text-align: center;
 }
 
-.grid {
+#grid {
   display: grid;
   width: 60%;
   margin: 0 20%;
@@ -17,50 +17,50 @@ h1 {
   grid-template-rows: 100%;
   grid-column-gap: 5px;
 }
-.grid .card {
+#grid .card {
   background-color: white;
   width: 100%;
   height: 225px;
   padding: 2%;
   border-radius: 0px;
 }
-.grid .card:hover {
+#grid .card:hover {
   border: 3px solid #00c3e3;
 }
-.grid .card:focus {
+#grid .card:focus {
   outline: none;
 }
-.grid .card img {
+#grid .card img {
   width: 70%;
   margin-left: 15%;
   margin-right: 15%;
   margin-top: 10%;
 }
-.grid .card #mushroom {
+#grid .card #mushroom {
   height: 75%;
   background-color: blue;
 }
-.grid .card #egg {
+#grid .card #egg {
   height: 75%;
   background-color: red;
 }
-.grid .card #star {
+#grid .card #star {
   height: 75%;
   background-color: green;
 }
-.grid .card .container {
+#grid .card .container {
   margin-top: 8%;
   text-align: center;
 }
-.grid .home {
+#grid .home {
   color: black;
   text-decoration: none;
 }
-.grid .home:hover {
+#grid .home:hover {
   color: black;
   text-decoration: none;
 }
-.grid .home h4 {
+#grid .home h4 {
   font-size: 1.2em;
 }
 
@@ -69,34 +69,36 @@ h1 {
   position: fixed;
   z-index: 1;
   top: 38%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
-  background-color: #efefef;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .modal #modal_content {
-  color: white;
-  margin: 15% auto;
+  margin: 5% auto;
   width: 50%;
 }
 .modal #modal_form input {
   height: 50px;
   width: 100%;
   margin-bottom: 10px;
-  background-color: white;
-  border: 3px solid #00c3e3;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+}
+.modal #modal_form input:focus {
+  outline: none;
 }
 .modal #modal_form input[type=submit] {
-  background-color: rgba(0, 0, 0, 0);
-  border: 2px solid black;
-  color: black;
-  margin-top: 50px;
-  width: 50%;
-  border-radius: 5px;
-}
-.modal #modal_form input[type=submit]:hover {
-  background-color: white;
-  border: 2px solid #00c3e3;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: blue;
+  border: none;
+  color: white;
+  margin-top: 30px;
+  width: 30%;
 }
 
 #select_icon {
@@ -238,91 +240,117 @@ div#edit_user_settings {
 }
 
 #edit_user input {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  border-bottom: 1px solid gray;
-  font-size: 1.75em;
+  height: 50px;
   width: 100%;
+  font-size: 20px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid black;
+  margin-bottom: 3%;
 }
 #edit_user input:focus {
   background-color: white;
+  border: 5px solid #00c3e3;
   outline: none;
-  border: none;
-  border: 2px solid #00c3e3;
-  font-size: 1.75em;
-  width: 100%;
 }
 #edit_user input[type=submit] {
-  background-color: #00c3e3;
-  font-size: 20px;
-  border: none;
   color: white;
-  height: 50px;
-  width: 150px;
-  border-radius: 0px;
-  position: absolute;
-  left: 5%;
+  background-color: blue;
+  width: 30%;
+  margin: 3% 35%;
+  border: none;
 }
 
 #delete_user {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   padding: 10px 20px;
-  position: relative;
-  top: 25%;
-  left: 1.5%;
   font-size: 1.25em;
   background-color: red;
   color: white;
   height: 50px;
-  width: 150px;
+  width: 30%;
+  text-align: center;
 }
 
 #confirm_delete {
   display: none;
-  position: fixed;
-  z-index: 2;
+  position: absolute;
+  z-index: 3;
   background-color: rgba(0, 0, 0, 0.8);
   height: 100%;
   width: 100%;
-  color: black;
+  color: white;
+  text-align: center;
 }
 #confirm_delete form {
-  position: fixed;
-  top: 35%;
-  left: 37%;
-  background-color: white;
-  height: 400px;
-  width: 400px;
+  display: block;
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
 }
-#confirm_delete h3 {
-  color: black;
+#confirm_delete input[type=password] {
+  color: white;
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: rgba(0, 0, 0, 0);
+  width: 70%;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+#confirm_delete input[type=password]:focus {
+  outline: none;
 }
 #confirm_delete input[type=submit] {
   background-color: red;
   color: white;
   border: none;
   border-radius: 0px;
+  margin-top: 20px;
+  padding: 15px 20px;
+  font-size: 20px;
 }
 
-#delete_article {
-  height: 50px;
-  margin: 10px 0;
+#user_profile {
+  height: 100%;
+  width: 100%;
 }
-#delete_article input[type=submit] {
+#user_profile #user_articles {
+  top: 20%;
+}
+#user_profile #user_articles .grid_item {
+  height: 300px;
+}
+#user_profile #user_articles .grid_item h3 {
+  padding: 5px 10px;
+}
+#user_profile #user_articles #delete_article {
+  height: 30px;
+  margin: 10px 20%;
+  width: 60%;
+}
+#user_profile #user_articles #delete_article input[type=submit] {
   background-color: red;
   margin: 0;
   color: white;
   border: none;
   border-radius: 0px;
   padding: 10px;
-  width: 200px;
+  width: 100%;
 }
 
 #single_article {
+  height: 95%;
   padding: 5% 10%;
   overflow: scroll;
 }
 #single_article img {
-  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
 }
 #single_article p {
   padding-top: 20px;
@@ -454,14 +482,15 @@ div#user_articles .grid_item:hover {
   border-radius: 2px;
 }
 div#user_articles .grid_item img {
-  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   height: 200px;
 }
 div#user_articles .grid_item h3 {
   font-size: 3vh;
-}
-div#user_articles .grid_item h4 {
-  font-size: 2vh;
+  padding-top: 5px;
+  padding-left: 10px;
 }
 
 div.article h3 {
@@ -560,14 +589,6 @@ div#screen_content {
   margin: 1% 17%;
   overflow: hidden;
   background-color: #efefef;
-}
-
-a.carousel-control-next,
-a.carousel-control-prev {
-  z-index: 3;
-  width: 50px;
-  height: 50px;
-  opacity: 1;
 }
 
 footer {

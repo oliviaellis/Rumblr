@@ -1,19 +1,23 @@
 <div id="user_header">
   <h2><img src=<%="/images/profile_icons/#{@user.icon}.png"%> style="background-color:<%=@user.color%>"></img><%="#{@user.first}'s Page"%></h2>
 </div>
-<div id="user_articles">
-  <% articles = Article.where(user_id: params[:id]) %>
-  <% if articles != nil %>
-    <% articles.reverse.each do |article|%>
-      <div class="grid_item">
-        <img src=<%="#{article.image}"%>></img>
-        <h3><%= article.title %></h3>
-        <% if article.user_id == session[:user_id] %>
-        <form id="delete_article" method="post" action=<%="/articles/#{article.id}" %> >
-          <input type="submit" name="" value="Delete Post">
-        </form>
-        <% end %>
-      </div>
+<div id="user_profile">
+  <div id="user_articles">
+    <% articles = Article.where(user_id: params[:id]) %>
+    <% if articles != nil %>
+      <% articles.reverse.each do |article|%>
+      <a href=<%="/articles/#{article.id}"%>>
+        <div class="grid_item">
+          <img src=<%="#{article.image}"%>></img>
+          <h3><%= article.title %></h3>
+          <% if article.user_id == session[:user_id] %>
+          <form id="delete_article" method="post" action=<%="/articles/#{article.id}" %> >
+            <input type="submit" name="" value="Delete Post">
+          </form>
+          <% end %>
+        </div>
+      </a>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
